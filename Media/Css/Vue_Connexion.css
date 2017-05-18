@@ -1,0 +1,42 @@
+
+/* changement de couleur de date sélectionné, date du jour et bouton dans le module date */
+.picker__date-display {
+    background-color:#0092CA;
+}
+.picker__weekday-display {
+    background-color:#0092CA;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color:#0092CA;
+}
+.btn-flat{
+    color: #343434;
+}
+.picker__day.picker__day--today{
+    color: #0092CA;
+}
+/* changement de couleur du label */
+.input-field input[type=text]:focus + label, .input-field input[type=email]:focus + label, .input-field input[type=password]:focus + label, .input-field input[type=tel]:focus + label{
+    color: #0092CA;
+}
+/* changement de couleur de la ligne */
+.input-field input[type=text]:focus, .input-field input[type=email]:focus, .input-field input[type=password]:focus, .input-field input[type=tel]:focus{
+    border-bottom: 1px solid #0092CA;
+    box-shadow: 0 1px 0 0 #0092CA;
+}
+/* changement de couleur de l'icone*/
+.material-icons.prefix.active{
+    color: #0092CA;
+}
+
+.connect{
+    width: 50%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.inscription{
+    width: 100%;
+    display: table-cell;
+    vertical-align: top;
+}

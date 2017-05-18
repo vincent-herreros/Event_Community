@@ -1,0 +1,70 @@
+body{
+    background-color: #eeeeee;
+}
+
+/* couleur des types dans rechercher*/
+.dropdown-content li > a, .dropdown-content li > span{
+    color: #0092CA;
+}
+/* colonne vide pour aérer*/
+.blank{
+    width: 7%;
+    background-color: #eeeeee;
+    display: table-cell;
+    vertical-align: top;
+    height: 500px;
+}
+
+.colonneEventPast{
+    width: 30%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.colonneEventComing{
+    width: 63%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.enteteEventPast{
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 30px;
+    align-content: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.enteteEventComing{
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 30px;
+    align-content: center;
+}
+
+.footerEventPast{
+    border-radius: 0 0 10px 10px;
+}
+
+.enteteEventPast div{
+    border-radius: 10px;
+}
+
+.enteteEventComing div{
+    border-radius: 10px;
+}
+
+.modal-footer button{
+    background-color: #0092CA;
+}
+
+.modal-footer button:hover{
+    background-color: #01579b;
+}
+
+.chips:hover, chips:focus{
+    border-bottom: 1px solid;
+    border-color: #0092CA;
+    box-shadow: 0 1px 0 0 #0092CA;
+}
+
