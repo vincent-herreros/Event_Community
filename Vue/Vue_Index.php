@@ -27,14 +27,11 @@
         <div class="row enteteEventPast" style="background-color: #0092CA; margin-bottom: 0px;">
             <div class="col s10 offset-s1" style="background-color: #393E46; color: white;">
                 <p class="flow-text center-align">Events passés</p>
-                <p>
-
-                </p>
             </div>
         </div>
 
         <?php
-        foreach ($clients as $client){
+        for($i=1;$i<=3;$i++){
             echo" <div class=\"row\" style=\"background-color: #0092CA; margin-bottom: 0px;\">
             <div class=\"col s12\" style=\"padding: 7%;\">
                 <div class=\"card\">
@@ -43,7 +40,7 @@
                     </div>
                     <div class=\"card-content\">
                         <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>
-                        <p><a href=\"#\">".$client['mail']."</a></p>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
                     </div>
                     <div class=\"card-reveal\">
                         <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>
