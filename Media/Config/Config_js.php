@@ -19,5 +19,10 @@
             selectYears: 200 // Creates a dropdown of 15 years to control year
         });
         $('.carousel').carousel();
+        $(function(){
+            console.log($('.chips-placeholder').material_chip('data'));
+        });
     });
+</script>
+<script type="text/javascript" src="Media/Javascript/script.js">
 </script>

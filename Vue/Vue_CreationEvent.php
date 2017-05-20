@@ -14,29 +14,33 @@ require('Vue_Menu.php');
 ?>
 <div class="container">
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" action="Controleur/Controleur_CreationEvent.php" method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">label_outline</i>
-                    <input id="titre" type="text" class="validate">
+                    <input id="titre" name="titre" type="text" class="validate">
                     <label for="titre">Nom de l'évenemment</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">turned_in_not</i>
-                    <select>
+                    <select id="type" name="type">
                         <option value="" disabled selected>Choisissez votre type d'event</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <?php
+                        require('Modele/Categorie.php');
+                        $categories=selectAllCategorie();
+                        foreach($categories as $categorie){
+                            echo"<option value=\"1\">".$categorie['libelle']."</option>";
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
             <div class="row col s12">
                 <i class="material-icons prefix">star</i>
                 <div class="chip chips-placeholder">
-                    <input id="input_text" type="text" data-length="10">
+                    <input id="input_text" name="tags" type="text" data-length="10">
                     <label for="input_text">Input text</label>
                     <i class="close material-icons">close</i>
                 </div>
@@ -44,21 +48,21 @@ require('Vue_Menu.php');
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="lieu" type="text" class="validate">
+                    <input id="lieu" name="lieu" type="text" class="validate">
                     <label for="lieu">Localisation de l'évenemment</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="participant" type="text" class="validate">
+                    <input id="participant" name="participant" type="text" class="validate">
                     <label for="participant">Nombre de participant à l'évenemment</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">today</i>
-                    <input type="date" class="datepicker">
+                    <input type="date" name="date" class="datepicker">
                     <label for="date">Date de l'évenemment</label>
                 </div>
             </div>
@@ -66,7 +70,7 @@ require('Vue_Menu.php');
                 <div class="input-field col s12">
                     <i class="material-icons prefix">schedule</i>
                     <p class="range-field">
-                        <input type="range" id="test5" min="0" max="24" />
+                        <input type="range" id="test5" name="heure" min="0" max="24" />
                     </p>
                 </div>
 
@@ -74,7 +78,7 @@ require('Vue_Menu.php');
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">chat_bubble_outline</i>
-                    <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                    <textarea id="textarea1" name="description" class="materialize-textarea" data-length="120"></textarea>
                     <label for="textarea1">Textarea</label>
                 </div>
             </div>
@@ -82,6 +86,7 @@ require('Vue_Menu.php');
                 <i class="material-icons right">send</i>
             </button>
         </form>
+        <button id="test">hello</button>
     </div>
 
 
