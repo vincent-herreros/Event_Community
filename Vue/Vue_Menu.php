@@ -6,13 +6,29 @@
             <li><a href="eventpast.php">Events passés</a></li>
             <li><a href="eventcoming.php">Events à venir</a></li>
             <li><a href="#modal1">Rechercher</a></li>
-            <li><a href="connexion.php">Connexion</a></li>
+            <li><a href="creation.php">Créer un Event</a></li>
+            <?php
+            if(connect()){
+                echo "<li><a href=\"connexion.php\">Déconnexion</a></li>";
+            }
+            else{
+                echo "<li><a href=\"connexion.php\">Connexion</a></li>";
+            }
+            ?>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="eventpast.php">Events passés</a></li>
             <li><a href="eventcoming.php">Events à venir</a></li>
             <li><a href="#modal1">Rechercher</a></li>
-            <li><a href="connexion.php">Connexion</a></li>
+            <li><a href="creation.php">Créer un Event</a></li>
+            <?php
+            if(connect()){
+                echo "<li><a href=\"connexion.php\">Déconnexion</a></li>";
+            }
+            else{
+                echo "<li><a href=\"connexion.php\">Connexion</a></li>";
+            }
+            ?>
         </ul>
     </div>
 </nav>

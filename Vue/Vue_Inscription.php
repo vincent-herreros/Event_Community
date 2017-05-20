@@ -17,39 +17,39 @@ require('Vue_Menu.php');
            <div class="row">
                <div class="input-field col s6">
                    <i class="material-icons prefix">person_pin</i>
-                   <input id="prenom" type="text" class="validate">
+                   <input id="prenom" name="prenom" type="text" class="validate">
                    <label for="prenom">Prenom</label>
                </div>
                <div class="input-field col s6">
                    <i class="material-icons prefix">person_pin</i>
-                   <input id="nom" type="text" class="validate">
+                   <input id="nom" name="nom" type="text" class="validate">
                    <label for="nom">Nom</label>
                </div>
            </div>
            <div class="row">
                <div class="input-field col s12">
                    <i class="material-icons prefix">email</i>
-                   <input id="email" type="email" class="validate">
+                   <input id="email" name="email" type="email" class="validate">
                    <label for="email">Email</label>
                </div>
            </div>
            <div class="row">
                <div class="input-field col s12">
                    <i class="material-icons prefix">vpn_key</i>
-                   <input id="password" type="password" class="validate">
+                   <input id="password" name="password" type="password" class="validate">
                    <label for="password">Password</label>
                </div>
            </div>
            <div class="row">
                <div class="input-field col s12">
                    <i class="material-icons prefix">today</i>
-                   <input id="age" type="text" class="validate">
+                   <input id="age" name="age" type="text" class="validate">
                    <label for="age">Age</label>
                </div>
            </div>
            <div class="input-field col s12">
                <i class="material-icons prefix">phone</i>
-               <input id="tel" type="tel" class="validate">
+               <input id="tel" name="tel" type="tel" class="validate">
                <label for="tel">Telephone</label>
            </div>
            <button class="btn waves-effect waves-light right" type="submit" name="action">Submit

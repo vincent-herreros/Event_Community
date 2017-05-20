@@ -38,15 +38,11 @@
     }
 
     function inscription($mail, $nom, $prenom, $password, $age, $tel, $cookieUser){
+        echo "$mail, $nom, $prenom, $password, $age, $tel, $cookieUser";
         require_once('pdo.php');
         $connexion = connexion();
-        $req = $connexion->prepare('INSERT INTO Users VALUES (:mail, :nom, :prenom, :tel, :age, :password, :cookieUser)');
-        $req->bindParam(':mail', $$mail);
-        $req->bindParam(':nom', $nom);
-        $req->bindParam(':prenom', $prenom);
-        $req->bindParam(':password', $password);
-        $req->bindParam(':age', $age);
-        $req->bindParam(':tel', $tel);
-        $req->bindParam(':cookieUser', $cookieUser);
+        $req = $connexion->prepare("INSERT INTO Users VALUES (:mail, :nom, :prenom, :tel, :age, :password, '', :cookieUser)");
+        $value=array(':mail'=>$mail,':nom'=>$nom, ':prenom'=>$prenom, ':tel'=>$tel, 'age'=>$age, ':password'=>$password, ':cookieUser'=>$cookieUser);
+        $req->execute($value);
     }
 ?>
