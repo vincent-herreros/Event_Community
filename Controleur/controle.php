@@ -6,10 +6,8 @@
         if(isset($_COOKIE["cookieUser"])){
             $cookie=$_COOKIE['cookieUser'];
             if(!empty(selectCookieUser($cookie))){
-                $codeCookie=substr(str_shuffle("0123456789azertyuiopmlkjhgfdsqwxcvbnAZERTYUIOPMLKJHGFDSQWXCVBN"),0,30);
                 $user=selectCookieUser($cookie);
-                setcookie("cookieUser", $codeCookie, time()+(3600), "/", '');
-                updateCookie($user['idUser'], $codeCookie);
+                setcookie("cookieUser", $user['cookieUser'], time()+(3600), "/", '');
                 return true;
             }
             else {

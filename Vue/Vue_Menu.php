@@ -1,24 +1,21 @@
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper" style="background-color: #0092CA;">
-            <a href="index.php" class="brand-logo grey-text text-darken-4" style="margin-left: 100px;">EventCommunity</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="eventpast.php">Events passés</a></li>
-                <li><a href="eventcoming.php">Events à venir</a></li>
-                <li><a href="#modal1">Rechercher</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
-            </ul>
-
-        </div>
-    </nav>
-</div>
-<ul class="side-nav" id="mobile-demo">
-    <li><a href="eventpast.php">Events passés</a></li>
-    <li><a href="eventcoming.php">Events à venir</a></li>
-    <li><a href="#modal1">Rechercher</a></li>
-    <li><a href="connexion.php">Connexion</a></li>
-</ul>
+<nav>
+    <div class="nav-wrapper" style="background-color: white;">
+        <a href="index.php" class="brand-logo grey-text text-darken-4 right" style="margin-left: 100px;">EventCommunity</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black;">menu</i></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="eventpast.php">Events passés</a></li>
+            <li><a href="eventcoming.php">Events à venir</a></li>
+            <li><a href="#modal1">Rechercher</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="eventpast.php">Events passés</a></li>
+            <li><a href="eventcoming.php">Events à venir</a></li>
+            <li><a href="#modal1">Rechercher</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
+        </ul>
+    </div>
+</nav>
 <div id="modal1" class="modal">
     <div class="modal-content">
         <div class="row" style="margin-bottom: 0px;">

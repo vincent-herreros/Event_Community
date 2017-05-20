@@ -12,82 +12,36 @@
 <?php
     require('Vue_Menu.php');
 ?>
-
-<div style="display: inline; vertical-align: top;">
-    <div style="width: 5%;">
-        <div class="row">
-            <div class="col s12">
-            </div>
-        </div>
+<div class="container">
+    <div class="carousel">
+        <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/250/250/nature/1"></a>
+        <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/250/250/nature/2"></a>
+        <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/250/250/nature/3"></a>
+        <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/250/250/nature/4"></a>
+        <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
     </div>
-    <div class="blank">
-
-    </div>
-    <div class="colonneEventPast">
-        <div class="row enteteEventPast" style="background-color: #0092CA; margin-bottom: 0px;">
-            <div class="col s10 offset-s1" style="background-color: #393E46; color: white;">
-                <p class="flow-text center-align">Events passés</p>
-            </div>
-        </div>
-
-        <?php
-        for($i=1;$i<=3;$i++){
-            echo" <div class=\"row\" style=\"background-color: #0092CA; margin-bottom: 0px;\">
-            <div class=\"col s12\" style=\"padding: 7%;\">
-                <div class=\"card\">
-                    <div class=\"card-image waves-effect waves-block waves-light\">
-                        <img class=\"activator\" src=\"Media/Images/vtt.png\">
-                    </div>
-                    <div class=\"card-content\">
-                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                    <div class=\"card-reveal\">
-                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
+    <?php
+        for ($i=0;$i<6;$i++){
+            echo "<div class=\"row\">";
+            for ($j=0;$j<2;$j++){
+                echo "<div class=\"col s6\">
+            <div class=\"card\">
+                <div class=\"card-image waves-effect waves-block waves-light\">
+                    <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
+                </div>
+                <div class=\"card-content\">
+                    <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>
+                </div>
+                <div class=\"card-reveal\">
+                    <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
             </div>
         </div>";
+            }
         }
     ?>
-        <div class="row footerEventPast" style="background-color: #0092CA; margin-bottom: 0px;">
-            <div class="col s10 offset-s1">
-                <p></p>
-            </div>
-        </div>
-    </div>
-    <div class="colonneEventComing">
-        <div class="row enteteEventComing">
-            <div class="col s10 offset-s1" style="background-color: #393E46; color: white;">
-                <p class="flow-text center-align">Events prévus</p>
-            </div>
-        </div>
-        <?php
-        for($i=1;$i<=3;$i++){
-            echo('<div class="row">
-                <div class="col s10 offset-s1">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="Media/Images/vtt.png">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                            <a class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>');
-        }
-        ?>
-    </div>
 </div>
-
 <?php
 require('Media/Config/Config_js.php');
 ?>
