@@ -35,14 +35,18 @@
 <div id="modal1" class="modal">
     <div class="modal-content">
         <div class="row" style="margin-bottom: 0px;">
-            <form class="col s12" style="margin-bottom: 0px;">
+            <form class="col s12" action="Controleur/Controleur_Rechercher.php" method="post" style="margin-bottom: 0px;">
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select id="type" name="type">
                             <option value="" disabled selected>Choisissez votre type d'event</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            <?php
+                            require('Modele/Categorie.php');
+                            $categories=selectAllCategorie();
+                            foreach($categories as $categorie){
+                                echo"<option value=\"".$categorie['libelle']."\">".$categorie['libelle']."</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>

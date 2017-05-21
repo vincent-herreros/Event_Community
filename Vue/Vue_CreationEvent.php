@@ -28,7 +28,6 @@ require('Vue_Menu.php');
                     <select id="type" name="type">
                         <option value="" disabled selected>Choisissez votre type d'event</option>
                         <?php
-                        require('Modele/Categorie.php');
                         $categories=selectAllCategorie();
                         foreach($categories as $categorie){
                             echo"<option value=\"".$categorie['libelle']."\">".$categorie['libelle']."</option>";

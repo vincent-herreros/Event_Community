@@ -18,7 +18,7 @@ function selectEvent($id){
     return $data;
 }
 
-function creationEvent($titre, $type, $lieu, $nbParticipant, $date, $heure, $description, $idUser, $motCles){
+function creationEvent($titre, $type, $lieu, $nbParticipant, $dateEvent, $heure, $description, $idUser, $motCles){
     require_once('pdo.php');
     $connexion = connexion();
     $reqType = $connexion->prepare("SELECT idCat FROM Categorie WHERE libelle=:libelle");
@@ -68,8 +68,9 @@ function selectEventByUser($titre, $idUser){
 }
 
 function rechercheEvents($type, $motCles){
-    require_once('pdo.php');
+    /*require_once('pdo.php');
     $connexion = connexion();
+    $chaine="";
     $i=1;
     foreach($motCles as $motCle) {
         if($i) {
@@ -80,7 +81,12 @@ function rechercheEvents($type, $motCles){
             $chaine.="AND idMot=$motCle";
         }
     }
-    $req = $connexion->prepare("SELECT * FROM (SELECT * FROM Events E, Categorie C WHERE libelle=:type AND E.idCat=C.idCat) INTERSECT (SELECT idEvent FROM caraterise WHERE ".$chaine.")");
-
+    $sql="SELECT * FROM (SELECT * FROM Events E, Categorie C WHERE libelle=:type AND E.idCat=C.idCat)";
+    if($chaine!=""){
+        $sql.="INTERSECT (SELECT idEvent FROM caraterise WHERE ".$chaine.")";
+    }
+    $req = $connexion->query($sql);
+    $date=$req->fetchAll();
+    echo"hello";*/
 }
 ?>
