@@ -6,7 +6,19 @@ require('../Modele/Events.php');
         echo"tous les champs ne sont pas remplis";
     }
     else{
-        rechercheEvents($type, $motCles);
-        header("Location: ../eventcoming.php");
+        $motCles = explode(" ", $motCles);
+        $datas=rechercheEvents($type, $motCles);
+        $chaine="";
+        $i=1;
+        foreach ($datas as $data){
+            if($chaine==""){
+                $chaine.="?idEvent".$i."=".$data["idEvent"];
+            }
+            else{
+                $chaine.="&idEvent".$i."=".$data["idEvent"];
+            }
+            $i++;
+        }
+        header("Location: ../resultat.php".$chaine);
     }
 ?>

@@ -27,27 +27,31 @@
         foreach($events as $event){
             if($i){
                 echo "<div class=\"row\">";
+            }
+            echo "<div class=\"col s6\">
+                    <div class=\"card\">
+                        <div class=\"card-image waves-effect waves-block waves-light\">
+                            <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
+                        </div>
+                        <div class=\"card-content\">
+                            <span class=\"card-title activator grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
+                        </div>
+                        <div class=\"card-reveal\">
+                            <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
+                            <p>".$event["Description"]."</p>
+                        </div>
+                    </div>
+                 </div>";
+            if($i){
                 $i=0;
             }
             else{
+                echo"</div>";
                 $i=1;
             }
-                echo "<div class=\"col s6\">
-            <div class=\"card\">
-                <div class=\"card-image waves-effect waves-block waves-light\">
-                    <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
-                </div>
-                <div class=\"card-content\">
-                    <span class=\"card-title activator grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
-                </div>
-                <div class=\"card-reveal\">
-                    <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
-                    <p>".$event["Description"]."</p>
-                </div>
-            </div>
-        </div>";
         }
     ?>
+
 </div>
 <?php
 require('Media/Config/Config_js.php');

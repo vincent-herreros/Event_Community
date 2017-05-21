@@ -50,22 +50,16 @@
                         </select>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 0px;">
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="textarea1" name="tags" class="materialize-textarea" data-length="120"></textarea>
-                                <label for="textarea1">Ecrivez vos mots clés séparés par des espaces</label>
-                            </div>
-                        </div>
-                    </form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" name="tags" class="materialize-textarea" data-length="120"></textarea>
+                        <label for="textarea1">Ecrivez vos mots clés séparés par des espaces</label>
+                    </div>
                 </div>
+                <button class="btn waves-effect" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn waves-effect" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-        </button>
     </div>
 </div>

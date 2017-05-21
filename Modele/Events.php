@@ -68,25 +68,27 @@ function selectEventByUser($titre, $idUser){
 }
 
 function rechercheEvents($type, $motCles){
-    /*require_once('pdo.php');
+    require_once('pdo.php');
     $connexion = connexion();
     $chaine="";
     $i=1;
     foreach($motCles as $motCle) {
         if($i) {
-            $chaine.="idMot=$motCle";
+            $chaine.="caracterise.idMot=\"".$motCle."\"";
                 $i=0;
         }
         else {
-            $chaine.="AND idMot=$motCle";
+            $chaine.=" OR caracterise.idMot=\"".$motCle."\"";
         }
     }
-    $sql="SELECT * FROM (SELECT * FROM Events E, Categorie C WHERE libelle=:type AND E.idCat=C.idCat)";
+    $sql="SELECT DISTINCT idEvent FROM (SELECT DISTINCT Events.idEvent FROM Events INNER JOIN Categorie ON Events.idCat=Categorie.idCat WHERE Categorie.libelle=\"".$type ."\") E";
     if($chaine!=""){
-        $sql.="INTERSECT (SELECT idEvent FROM caraterise WHERE ".$chaine.")";
+        $sql.=" NATURAL JOIN (SELECT DISTINCT * FROM caracterise WHERE ".$chaine.") C";
     }
-    $req = $connexion->query($sql);
-    $date=$req->fetchAll();
-    echo"hello";*/
+    echo $sql;
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $data=$req->fetchAll();
+    return $data;
 }
 ?>
