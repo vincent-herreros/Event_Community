@@ -38,7 +38,6 @@
             <form class="col s12" style="margin-bottom: 0px;">
                 <div class="row">
                     <div class="input-field col s12">
-                        <p>Type</p>
                         <select>
                             <option value="" disabled selected>Choisissez votre type d'event</option>
                             <option value="1">Option 1</option>
@@ -49,12 +48,10 @@
                 </div>
                 <div class="row" style="margin-bottom: 0px;">
                     <form class="col s12">
-                        <div class="row" style="margin-left: 10px;">
-                            <p>Entrez vos mots clés</p>
-                            <div class="chip chips-placeholder">
-                                <input id="input_text" type="text" data-length="10">
-                                <label for="input_text">Input text</label>
-                                <i class="close material-icons">close</i>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" name="tags" class="materialize-textarea" data-length="120"></textarea>
+                                <label for="textarea1">Ecrivez vos mots clés séparés par des espaces</label>
                             </div>
                         </div>
                     </form>

@@ -9,7 +9,6 @@
     echo" salut";
     if(empty($email) || empty($nom) || empty($prenom) || empty($password) || empty($tel) || empty($age)){
         echo "vous n'avez pas rempli tous les champs";
-        echo "$nom";
     }
     else if(!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
         echo "votre mail n'est pas valide";

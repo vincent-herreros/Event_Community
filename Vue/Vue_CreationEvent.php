@@ -31,18 +31,17 @@ require('Vue_Menu.php');
                         require('Modele/Categorie.php');
                         $categories=selectAllCategorie();
                         foreach($categories as $categorie){
-                            echo"<option value=\"1\">".$categorie['libelle']."</option>";
+                            echo"<option value=\"".$categorie['libelle']."\">".$categorie['libelle']."</option>";
                         }
                         ?>
                     </select>
                 </div>
             </div>
-            <div class="row col s12">
-                <i class="material-icons prefix">star</i>
-                <div class="chip chips-placeholder">
-                    <input id="input_text" name="tags" type="text" data-length="10">
-                    <label for="input_text">Input text</label>
-                    <i class="close material-icons">close</i>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">star</i>
+                    <textarea id="textarea1" name="tags" class="materialize-textarea" data-length="120"></textarea>
+                    <label for="textarea1">Ecrivez vos mots clés séparés par des espaces</label>
                 </div>
             </div>
             <div class="row">
@@ -86,8 +85,8 @@ require('Vue_Menu.php');
                 <i class="material-icons right">send</i>
             </button>
         </form>
-        <button id="test">hello</button>
     </div>
+</div>
 
 
 <?php

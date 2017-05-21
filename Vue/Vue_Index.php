@@ -21,24 +21,31 @@
         <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
     </div>
     <?php
-        for ($i=0;$i<6;$i++){
-            echo "<div class=\"row\">";
-            for ($j=0;$j<2;$j++){
+        require('Modele/Events.php');
+        $events=selectAllEvents();
+        $i=1;
+        foreach($events as $event){
+            if($i){
+                echo "<div class=\"row\">";
+                $i=0;
+            }
+            else{
+                $i=1;
+            }
                 echo "<div class=\"col s6\">
             <div class=\"card\">
                 <div class=\"card-image waves-effect waves-block waves-light\">
                     <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
                 </div>
                 <div class=\"card-content\">
-                    <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>
+                    <span class=\"card-title activator grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
                 </div>
                 <div class=\"card-reveal\">
-                    <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
+                    <p>".$event["Description"]."</p>
                 </div>
             </div>
         </div>";
-            }
         }
     ?>
 </div>

@@ -18,21 +18,21 @@ function selectEvent($id){
     return $data;
 }
 
-function creationEvent($titre, $type, $lieu, $nbPaticipant, $date, $heure, $description, $idUser, $motCles){
+function creationEvent($titre, $type, $lieu, $nbParticipant, $date, $heure, $description, $idUser, $motCles){
     require_once('pdo.php');
     $connexion = connexion();
     $reqType = $connexion->prepare("SELECT idCat FROM Categorie WHERE libelle=:libelle");
     $reqType->bindParam(':libelle', $type);
     $reqType->execute();
-    $idCat = $reqType->fetch();
-    $req = $connexion->prepare("INSERT INTO Users VALUES ('', :titre, :nbParticipant, :lieu, :dateEvent, :heure, '0', :description, :idUser, :idCat)");
-    $value=array(':titre'=>$titre, ':nbPaticipant'=>$nbPaticipant, ':lieu'=>$lieu, ':dateEvent'=>$date, 'heure'=>$heure, ':decription'=>$description, ':idUser'=>$idUser, ':idCat'=>$idCat);
+    $idCat = $reqType->fetch()[0][0];
+    $date1=date_create($dateEvent);
+    $dateEvent=date_format($date1,'Y-m-d H:i:s');
+    $req = $connexion->prepare("INSERT INTO Events VALUES ('', :titre, :nbParticipant, :lieu, :dateEvent, :heure, '0', :description, :idUser, :idCat)");
+    $value=array(':titre'=>$titre, ':nbParticipant'=>$nbParticipant, ':lieu'=>$lieu, ':dateEvent'=>$dateEvent, 'heure'=>$heure, ':description'=>$description, ':idUser'=>$idUser, ':idCat'=>$idCat);
     $req->execute($value);
-    $reqId = $connexion->prepare("SELECT idEvent FROM Events WHERE Titre=:titre AND idUser:=idUser");
-    $reqId->bindParam(':idEvent', $idEvent);
-    $reqId->bindParam(':idUser', $idUser);
-    $reqId->execute();
-    $idEvent=$reqId->fetch();
+    $Event=selectEventByUser($titre, $idUser);
+    $idEvent=$Event["idEvent"];
+    echo $idEvent;
     foreach ($motCles as $motCle){
         insertionMotCle($motCle);
         insertionCaracterise($idEvent, $motCle);
@@ -54,5 +54,33 @@ function insertionCaracterise($idEvent, $motCle){
     $req->bindParam(':motCle', $motCle);
     $req->bindParam(':idEvent', $idEvent);
     $req->execute();
+}
+
+function selectEventByUser($titre, $idUser){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $reqId = $connexion->prepare("SELECT * FROM Events WHERE Titre=:titre AND idUser=:idUser");
+    $reqId->bindParam(':titre', $titre);
+    $reqId->bindParam(':idUser', $idUser);
+    $reqId->execute();
+    $data=$reqId->fetch();
+    return $data;
+}
+
+function rechercheEvents($type, $motCles){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $i=1;
+    foreach($motCles as $motCle) {
+        if($i) {
+            $chaine.="idMot=$motCle";
+                $i=0;
+        }
+        else {
+            $chaine.="AND idMot=$motCle";
+        }
+    }
+    $req = $connexion->prepare("SELECT * FROM (SELECT * FROM Events E, Categorie C WHERE libelle=:type AND E.idCat=C.idCat) INTERSECT (SELECT idEvent FROM caraterise WHERE ".$chaine.")");
+
 }
 ?>

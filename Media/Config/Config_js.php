@@ -2,7 +2,7 @@
 <script type="text/javascript" src="Media/Javascript/materialize.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
         $('select').material_select();
@@ -19,10 +19,5 @@
             selectYears: 200 // Creates a dropdown of 15 years to control year
         });
         $('.carousel').carousel();
-        $(function(){
-            console.log($('.chips-placeholder').material_chip('data'));
-        });
-    });
-</script>
-<script type="text/javascript" src="Media/Javascript/script.js">
+    })
 </script>
