@@ -11,7 +11,7 @@ function selectAllEvents(){
 function selectEvent($id){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare('SELECT * FROM Users WHERE idEvent=:mail');
+    $req = $connexion->prepare('SELECT * FROM Events WHERE idEvent=:id');
     $req->bindParam(':id', $id);
     $req->execute();
     $data = $req->fetch();
@@ -73,12 +73,14 @@ function rechercheEvents($type, $motCles){
     $chaine="";
     $i=1;
     foreach($motCles as $motCle) {
-        if($i) {
-            $chaine.="caracterise.idMot=\"".$motCle."\"";
+        if($motCle!=" " && $motCle!=""){
+            if($i) {
+                $chaine.="caracterise.idMot=\"".$motCle."\"";
                 $i=0;
-        }
-        else {
-            $chaine.=" OR caracterise.idMot=\"".$motCle."\"";
+            }
+            else {
+                $chaine.=" OR caracterise.idMot=\"".$motCle."\"";
+            }
         }
     }
     $sql="SELECT DISTINCT idEvent FROM (SELECT DISTINCT Events.idEvent FROM Events INNER JOIN Categorie ON Events.idCat=Categorie.idCat WHERE Categorie.libelle=\"".$type ."\") E";
