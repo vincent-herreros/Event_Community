@@ -14,7 +14,8 @@ require('Vue_Menu.php');
 ?>
 <div class="container">
     <?php
-    $events=selectAllEvents();
+    $user=selectCookieUser($_COOKIE['cookieUser']);
+    $events=selectEventByUser($user["idUser"]);
     $i=1;
     foreach($events as $event){
         if($i){
@@ -43,8 +44,8 @@ require('Vue_Menu.php');
         }
     }
     ?>
-
 </div>
+
 <?php
 require('Media/Config/Config_js.php');
 ?>

@@ -21,8 +21,7 @@
         <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
     </div>
     <?php
-        require('Modele/Events.php');
-        $events=selectAllEvents();
+        $events=selectAllEventsLimit(6);
         $i=1;
         foreach($events as $event){
             if($i){
@@ -51,7 +50,6 @@
             }
         }
     ?>
-
 </div>
 <?php
 require('Media/Config/Config_js.php');

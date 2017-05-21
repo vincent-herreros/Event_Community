@@ -1,5 +1,9 @@
 <?php
 require("Controleur/controle.php");
-require('Vue/Vue_CreationEvent.php');
-
+if(connect()){
+    require('Vue/Vue_CreationEvent.php');
+}
+else{
+    header("Location: connexion.php");
+}
 ?>

@@ -8,6 +8,15 @@ function selectAllEvents(){
     return $data;
 }
 
+function selectAllEventsLimit($i){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM Events LIMIT ".$i);
+    $req->execute();
+    $data = $req->fetchAll();
+    return $data;
+}
+
 function selectEvent($id){
     require_once('pdo.php');
     $connexion = connexion();
@@ -30,7 +39,7 @@ function creationEvent($titre, $type, $lieu, $nbParticipant, $dateEvent, $heure,
     $req = $connexion->prepare("INSERT INTO Events VALUES ('', :titre, :nbParticipant, :lieu, :dateEvent, :heure, '0', :description, :idUser, :idCat)");
     $value=array(':titre'=>$titre, ':nbParticipant'=>$nbParticipant, ':lieu'=>$lieu, ':dateEvent'=>$dateEvent, 'heure'=>$heure, ':description'=>$description, ':idUser'=>$idUser, ':idCat'=>$idCat);
     $req->execute($value);
-    $Event=selectEventByUser($titre, $idUser);
+    $Event=selectEventByUserandTitre($titre, $idUser);
     $idEvent=$Event["idEvent"];
     echo $idEvent;
     foreach ($motCles as $motCle){
@@ -56,7 +65,7 @@ function insertionCaracterise($idEvent, $motCle){
     $req->execute();
 }
 
-function selectEventByUser($titre, $idUser){
+function selectEventByUserandTitre($titre, $idUser){
     require_once('pdo.php');
     $connexion = connexion();
     $reqId = $connexion->prepare("SELECT * FROM Events WHERE Titre=:titre AND idUser=:idUser");
@@ -89,6 +98,16 @@ function rechercheEvents($type, $motCles){
     }
     echo $sql;
     $req = $connexion->prepare($sql);
+    $req->execute();
+    $data=$req->fetchAll();
+    return $data;
+}
+
+function selectEventByUser($idUser){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser");
+    $req->bindParam(':idUser', $idUser);
     $req->execute();
     $data=$req->fetchAll();
     return $data;

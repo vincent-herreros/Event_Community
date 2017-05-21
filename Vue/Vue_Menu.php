@@ -9,6 +9,7 @@
             <li><a href="creation.php">Créer un Event</a></li>
             <?php
             if(connect()){
+                echo "<li><a href=\"mesevents.php\">Mes Events</a></li>";
                 echo "<li><a href=\"connexion.php\">Déconnexion</a></li>";
             }
             else{

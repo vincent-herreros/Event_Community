@@ -1,6 +1,7 @@
 <?php
     require('Modele/pdo.php');
     require('Modele/Users.php');
+    require('Modele/Events.php');
 
     function connect(){
         if(isset($_COOKIE["cookieUser"])){
