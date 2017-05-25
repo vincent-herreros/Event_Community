@@ -2,7 +2,7 @@
 function selectAllEvents(){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare('SELECT * FROM Events WHERE etat=0');
+    $req = $connexion->prepare('SELECT * FROM Events WHERE etat=0 ORDER BY dateEvent');
     $req->execute();
     $data = $req->fetchAll();
     return $data;
@@ -113,6 +113,40 @@ function selectEventByUser($idUser){
     return $data;
 }
 
+function selectEventByUserAndFini($idUser){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser AND etat=0");
+    $req->bindParam(':idUser', $idUser);
+    $req->execute();
+    $data=$req->fetchAll();
+    return $data;
+}
+
+function selectEventInscrit($idUser){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM participe WHERE idUser=:idUser");
+    $req->bindParam(':idUser', $idUser);
+    $req->execute();
+    $idEvents=$req->fetchAll();
+    $chaine="";
+    $i=1;
+    foreach($idEvents as $idEvent) {
+        if($i) {
+            $chaine.=" AND idEvent=\"".$idEvent["idEvent"]."\"";
+            $i=0;
+        }
+        else {
+            $chaine.=" OR idEvent=\"".$idEvent["idEvent"]."\"";
+        }
+    }
+    $req2 = $connexion->prepare("SELECT * FROM Events WHERE etat=0".$chaine." ORDER BY dateEvent");
+    $req2->execute();
+    $data = $req2->fetchAll();
+    return $data;
+}
+
 function setEventFini($idEvent){
     require_once('pdo.php');
     $connexion = connexion();
@@ -124,7 +158,7 @@ function setEventFini($idEvent){
 function selectEventFini(){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare("SELECT * FROM Events WHERE etat=1");
+    $req = $connexion->prepare("SELECT * FROM Events WHERE etat=1 ORDER BY dateEvent DESC");
     $req->execute();
     $data=$req->fetchAll();
     return $data;
@@ -151,5 +185,25 @@ function inscriptionEvent($idUser, $idEvent, $nb){
     $req2->bindParam(':idEvent', $idEvent);
     $req2->execute();
 
+}
+
+function selectEventFiniandParticipe($idUser){
+    $eventFinis=selectEventFini();
+    $events=array();
+    foreach ($eventFinis as $eventFini){
+        $eventPs=selectEventInscrit($idUser);
+        foreach($eventPs as $eventP) {
+            if (!empty($eventP) and $eventFini['idEvent']==$eventP['idEvent']){
+                array_push($events, $eventFini);
+            }
+        }
+        $eventCs=selectEventByUser($idUser);
+        foreach($eventCs as $eventC) {
+            if (!empty($eventC) and $eventFini['idEvent']==$eventC['idEvent']){
+                array_push($events, $eventFini);
+            }
+        }
+    }
+    return $events;
 }
 ?>

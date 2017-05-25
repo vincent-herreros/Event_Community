@@ -19,7 +19,7 @@ require('Vue_Menu.php');
                 <div class="input-field col s12">
                     <i class="material-icons prefix">label_outline</i>
                     <input id="titre" name="titre" type="text" class="validate">
-                    <label for="titre">Nom de l'évenemment</label>
+                    <label for="titre">Nom de l'évenement</label>
                 </div>
             </div>
             <div class="row">
@@ -47,21 +47,21 @@ require('Vue_Menu.php');
                 <div class="input-field col s12">
                     <i class="material-icons prefix">location_on</i>
                     <input id="lieu" name="lieu" type="text" class="validate">
-                    <label for="lieu">Localisation de l'évenemment</label>
+                    <label for="lieu">Localisation de l'évenement</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">perm_identity</i>
                     <input id="participant" name="participant" type="text" class="validate">
-                    <label for="participant">Nombre de participant à l'évenemment</label>
+                    <label for="participant">Nombre de participant à l'évenement</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">today</i>
                     <input type="date" name="date" class="datepicker">
-                    <label for="date">Date de l'évenemment</label>
+                    <label for="date">Date de l'évenement</label>
                 </div>
             </div>
             <div class="row">

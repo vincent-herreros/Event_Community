@@ -11,46 +11,34 @@
 <body>
 <?php
 require('Vue_Menu.php');
+require ('Vue_Events.php');
 ?>
 <div class="container">
-    <?php
-    require('Modele/Events.php');
-    $user=selectCookieUser($_COOKIE['cookieUser']);
-    $events=selectEventByUser($user["idUser"]);
-    $i=1;
-    foreach($events as $event){
-        if($i){
-            echo "<div class=\"row\">";
-        }
-        echo "<div class=\"col s6\">
-                    <div class=\"card\">
-                        <div class=\"card-image waves-effect waves-block waves-light\">
-                            <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
-                        </div>
-                        <div class=\"card-content\">
-                            <span class=\"card-title activator grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
-                        </div>
-                        <div class=\"card-reveal\">
-                            <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
-                            <p>".$event["Description"]."</p>
-                            <form action=\"Controleur/Controleur_MesEvents.php\" method=\"post\">
-                                <textarea id=\"textarea1\" name=\"idEvent\" class=\"materialize-textarea\" data-length=\"120\" style='display: none;'>".$event["idEvent"]."</textarea>
-                                <button class=\"btn waves-effect waves-light right\" type=\"submit\" name=\"action\">Submit
-                                    <i class=\"material-icons right\">send</i>
-                                </button>                          
-                            </form>
-                        </div>
-                    </div>
-                 </div>";
-        if($i){
-            $i=0;
-        }
-        else{
-            echo"</div>";
-            $i=1;
-        }
-    }
-    ?>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#EventC">Mes Evenements crées</a></li>
+                <li class="tab col s3"><a href="#Inscri">Mes Inscriptions</a></li>
+                <li class="tab col s3"><a href="#MyE">Mes Events finis</a></li>
+                <li class="tab col s3"><a href="#MyI">Mes Infos</a></li>
+            </ul>
+        </div>
+        <div id="EventC" class="col s12">
+            <?php
+                affichage(3);
+            ?>
+        </div>
+        <div id="Inscri" class="col s12">
+            <?php
+                affichage(4);
+            ?>
+        </div>
+        <div id="MyE" class="col s12">
+            <?php
+                affichage(5);
+            ?>
+        </div>
+    </div>
 </div>
 
 <?php
