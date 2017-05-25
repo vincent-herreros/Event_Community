@@ -13,14 +13,29 @@
     require('Vue_Menu.php');
 ?>
 <div class="container">
-    <div class="carousel">
-        <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/250/250/nature/1"></a>
-        <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/250/250/nature/2"></a>
-        <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/250/250/nature/3"></a>
-        <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/250/250/nature/4"></a>
-        <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
+    <div class="center-align" style="margin-top: 5%">
+        <img class="responsive-img" src="Media/Images/logo2.png">
+    </div>
+    <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-item red white-text" href="#one!">
+            <h2>First Panel</h2>
+            <p class="white-text">This is your first panel</p>
+        </div>
+        <div class="carousel-item amber white-text" href="#two!">
+            <h2>Second Panel</h2>
+            <p class="white-text">This is your second panel</p>
+        </div>
+        <div class="carousel-item green white-text" href="#three!">
+            <h2>Third Panel</h2>
+            <p class="white-text">This is your third panel</p>
+        </div>
+        <div class="carousel-item blue white-text" href="#four!">
+            <h2>Fourth Panel</h2>
+            <p class="white-text">This is your fourth panel</p>
+        </div>
     </div>
     <?php
+        require('Modele/Events.php');
         $events=selectAllEventsLimit(6);
         $i=1;
         foreach($events as $event){
@@ -33,11 +48,21 @@
                             <img class=\"activator\" src=\"Media/Images/chaton.jpg\">
                         </div>
                         <div class=\"card-content\">
-                            <span class=\"card-title activator grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
+                            <span class=\"card-title activator grey-text text-darken-4 center-align\">".$event["Titre"]."<i class=\"material-icons right\">more_vert</i></span>
                         </div>
                         <div class=\"card-reveal\">
-                            <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
-                            <p>".$event["Description"]."</p>
+                            <span class=\"card-title grey-text text-darken-4 center-align\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
+                                <div class='row'>
+                                    <div class='col s6'>
+                                        <p>".$event["Description"]."</p>
+                                    </div>
+                                    <div class='col s6'>
+                                        <p>".$event["lieu"]."</p>
+                                        <p>".$event["nbparticipant"]."</p>
+                                        <p>".$event["dateEvent"]."</p>
+                                        <p>".$event["heure"]."</p>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                  </div>";

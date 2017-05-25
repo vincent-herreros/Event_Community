@@ -1,6 +1,6 @@
 <nav>
-    <div class="nav-wrapper" style="background-color: white;">
-        <a href="index.php" class="brand-logo grey-text text-darken-4 right" style="margin-left: 100px;">EventCommunity</a>
+    <div class="nav-wrapper" style="background-color: #eeeeee;">
+        <a href="index.php" class="brand-logo grey-text text-darken-4 right" style="margin-left: 100px;"><img class="responsive-img" src="Media/Images/logo10.png" style="height: 100%"/></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black;">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="eventpast.php">Events passés</a></li>

@@ -2,7 +2,7 @@
 function selectAllEvents(){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare('SELECT * FROM Events');
+    $req = $connexion->prepare('SELECT * FROM Events WHERE etat=0');
     $req->execute();
     $data = $req->fetchAll();
     return $data;
@@ -111,5 +111,45 @@ function selectEventByUser($idUser){
     $req->execute();
     $data=$req->fetchAll();
     return $data;
+}
+
+function setEventFini($idEvent){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("UPDATE Events SET etat=1 WHERE idEvent=:idEvent");
+    $req->bindParam(':idEvent', $idEvent);
+    $req->execute();
+}
+
+function selectEventFini(){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM Events WHERE etat=1");
+    $req->execute();
+    $data=$req->fetchAll();
+    return $data;
+}
+
+function inscriptionEvent($idUser, $idEvent, $nb){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $verif = $connexion->prepare("SELECT * FROM participe WHERE idEvent=:idEvent AND idUser=:idUser");
+    $verif->bindParam('idEvent', $idEvent);
+    $verif->execute();
+    $data2=$verif->fetchAll();
+    if(empty($data2)){
+        $req = $connexion->prepare("INSERT INTO participe VALUES( :idUser, :idEvent, :nb)");
+    }
+    else{
+        $req = $connexion->prepare("UPDATE participe SET nbParticipants=$nb WHERE idEvent=:idEvent AND idUser=:idUser");
+    }
+    $value=array(':idUser'=>$idUser, ':idEvent'=>$idEvent, ':nb'=>$nb);
+    $req->execute($value);
+    $data = selectEvent($idEvent);
+    $nb=$nb+$data['nbparticipant'];
+    $req2 = $connexion->prepare("UPDATE Events SET nbparticipant=$nb WHERE idEvent=:idEvent");
+    $req2->bindParam(':idEvent', $idEvent);
+    $req2->execute();
+
 }
 ?>

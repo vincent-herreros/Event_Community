@@ -14,6 +14,7 @@ require('Vue_Menu.php');
 ?>
 <div class="container">
     <?php
+    require('Modele/Events.php');
     $user=selectCookieUser($_COOKIE['cookieUser']);
     $events=selectEventByUser($user["idUser"]);
     $i=1;
@@ -32,6 +33,12 @@ require('Vue_Menu.php');
                         <div class=\"card-reveal\">
                             <span class=\"card-title grey-text text-darken-4\">".$event["Titre"]."<i class=\"material-icons right\">close</i></span>
                             <p>".$event["Description"]."</p>
+                            <form action=\"Controleur/Controleur_MesEvents.php\" method=\"post\">
+                                <textarea id=\"textarea1\" name=\"idEvent\" class=\"materialize-textarea\" data-length=\"120\" style='display: none;'>".$event["idEvent"]."</textarea>
+                                <button class=\"btn waves-effect waves-light right\" type=\"submit\" name=\"action\">Submit
+                                    <i class=\"material-icons right\">send</i>
+                                </button>                          
+                            </form>
                         </div>
                     </div>
                  </div>";
