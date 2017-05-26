@@ -19,7 +19,7 @@ $idEvent=$_GET['idEvent'];
             $event=selectEvent($idEvent);
             echo "<h1>".$event["Titre"]."</h1>";
         ?>
-    <div class="row">
+    <div class="row" >
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a class="active" href="#Des">Description</a></li>
@@ -27,7 +27,7 @@ $idEvent=$_GET['idEvent'];
                 <li class="tab col s3"><a href="#Pho">Photos</a></li>
             </ul>
         </div>
-        <div id="Des" class="col s12">
+        <div id="Des" class="col s12" style="margin-top: 2%;">
             <div class='row'>
                 <?php
                 echo"<div class='col s6'>
@@ -42,7 +42,7 @@ $idEvent=$_GET['idEvent'];
                 ?>
             </div>
         </div>
-        <div id="Com" class="col s12">
+        <div id="Com" class="col s12" style="margin-top: 2%;">
             <?php
                 require ('Modele/Com.php');
                 $coms=selectAllComByEvent($idEvent);
@@ -80,16 +80,50 @@ $idEvent=$_GET['idEvent'];
                 </form>
             </div>
         </div>
-        <div id="Pho" class="col s12">
+        <div id="Pho" class="col s12" style="margin-top: 2%;">
+            <?php
+                require ('Modele/Photos.php');
+                $photos=selectPhotos($idEvent);
+                $i=1;
+                $j=0;
+                foreach ($photos as $photo){
+                    $j++;
+                    if($i){
+                        echo "<div class=\"row\">";
+                    }
+                    echo" <div class='col s6'>
+                                <img  class=\"responsive-img materialboxed\" width=\"\" src='Media/fichiers/".$idEvent."/".$photo["idPhoto"].".".$photo["extension"]."'>
+                            </div>";
+                    if($i==2 or $j==sizeof($photos)){
+                        echo"</div>";
+                        $i=1;
+                    }
+                    elseif($i==1){
+                        $i=2;
+                    }
+                    else{
+                        $i=0;
+                    }
+                }
+            ?>
             <form method="post" action="Controleur/Controleur_Photo.php" enctype="multipart/form-data">
                 <label for="mon_fichier">Fichier (tous formats | max. 1 Mo) :</label><br />
                 <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                <input type="file" name="mon_fichier" id="mon_fichier" /><br />
-                <label for="titre">Titre du fichier (max. 50 caractères) :</label><br />
-                <input type="text" name="titre" value="Titre du fichier" id="titre" /><br />
-                <label for="description">Description de votre fichier (max. 255 caractères) :</label><br />
-                <textarea name="description" id="description"></textarea><br />
-                <input type="submit" name="submit" value="Envoyer" />
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Fichier</span>
+                        <input name="mon_fichier"type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <?php
+                echo "<textarea id=\"textarea1\" name=\"idE\" class=\"materialize - textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$idEvent."</textarea>";
+                ?>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
         </div>
     </div>

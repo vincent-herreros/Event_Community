@@ -103,7 +103,6 @@ function affichage($choix){
                     <p class=\"range-field\">
                         <input type=\"range\" name='nbpersonne' id=\"test5\" min=\"0\" max=\"100\" />
                     </p>
-                     
                     <button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Participer
                         <i class=\"material-icons right\"></i>
                     </button>
@@ -114,12 +113,12 @@ function affichage($choix){
         }
         elseif ($choix==3){
             echo "<form action=\"Controleur/Controleur_MesEvents.php\" method=\"post\">
-                    <div class=\"input-field col s12\">
-                        <textarea id=\"textarea1\" name=\"idE\" class=\"materialize-textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$event["idEvent"]."</textarea>
-                    </div>
                     <button class=\"btn waves - effect waves - light\" type=\"submit\" name=\"action\">Fin d'événement
                         <i class=\"material - icons right\"></i>
                     </button>
+                    <div class=\"input-field col s12\">
+                        <textarea id=\"textarea1\" name=\"idE\" class=\"materialize-textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$event["idEvent"]."</textarea>
+                    </div>
                 </form>";
         }
         elseif ($choix==5) {

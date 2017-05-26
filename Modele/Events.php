@@ -133,11 +133,11 @@ function selectEventInscrit($idUser){
         $i=1;
         foreach($idEvents as $idEvent) {
             if($i) {
-                $chaine.=" AND idEvent=\"".$idEvent["idEvent"]."\"";
+                $chaine.=" AND idEvent=".$idEvent["idEvent"]."";
                 $i=0;
             }
             else {
-                $chaine.=" OR idEvent=\"".$idEvent["idEvent"]."\"";
+                $chaine.=" OR idEvent=".$idEvent["idEvent"]."";
             }
         }
         $req2 = $connexion->prepare("SELECT * FROM Events WHERE etat=0".$chaine." ORDER BY dateEvent");
@@ -147,6 +147,37 @@ function selectEventInscrit($idUser){
     }
     else{
         return array();
+
+    }
+}
+
+function selectEventInscritAndFini($idUser){
+    require_once('pdo.php');
+    $connexion = connexion();
+    $req = $connexion->prepare("SELECT * FROM participe WHERE idUser=:idUser");
+    $req->bindParam(':idUser', $idUser);
+    $req->execute();
+    $idEvents=$req->fetchAll();
+    if(!empty($idEvents)){
+        $chaine="";
+        $i=1;
+        foreach($idEvents as $idEvent) {
+            if($i) {
+                $chaine.=" AND idEvent=".$idEvent["idEvent"]."";
+                $i=0;
+            }
+            else {
+                $chaine.=" OR idEvent=".$idEvent["idEvent"]."";
+            }
+        }
+        $req2 = $connexion->prepare("SELECT * FROM Events WHERE etat=1".$chaine." ORDER BY dateEvent");
+        $req2->execute();
+        $data = $req2->fetchAll();
+        return $data;
+    }
+    else{
+        return array();
+
     }
 }
 
@@ -195,7 +226,7 @@ function selectEventFiniandParticipe($idUser){
     $eventFinis=selectEventFini();
     $events=array();
     foreach ($eventFinis as $eventFini){
-        $eventPs=selectEventInscrit($idUser);
+        $eventPs=selectEventInscritAndFini($idUser);
         foreach($eventPs as $eventP) {
             if (!empty($eventP) and $eventFini['idEvent']==$eventP['idEvent']){
                 array_push($events, $eventFini);
