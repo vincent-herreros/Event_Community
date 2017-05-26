@@ -16,3 +16,5 @@ function insertionCom($idEvent, $idUser, $note, $com){
     $value=array(':idUser'=>$idUser, ':idEvent'=>$idEvent, ':note'=>$note, ':com'=>$com);
     $req->execute($value);
 }
+
+?>

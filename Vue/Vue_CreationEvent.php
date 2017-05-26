@@ -77,10 +77,10 @@ require('Vue_Menu.php');
                 <div class="input-field col s12">
                     <i class="material-icons prefix">chat_bubble_outline</i>
                     <textarea id="textarea1" name="description" class="materialize-textarea" data-length="120"></textarea>
-                    <label for="textarea1">Textarea</label>
+                    <label for="textarea1">Description</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+            <button class="btn waves-effect waves-light right" type="submit" name="action">Créer
                 <i class="material-icons right">send</i>
             </button>
         </form>

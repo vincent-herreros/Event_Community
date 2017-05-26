@@ -11,7 +11,7 @@ function selectAllEvents(){
 function selectAllEventsLimit($i){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare("SELECT * FROM Events LIMIT ".$i);
+    $req = $connexion->prepare("SELECT * FROM Events ORDER BY dateEvent LIMIT ".$i);
     $req->execute();
     $data = $req->fetchAll();
     return $data;
@@ -20,7 +20,7 @@ function selectAllEventsLimit($i){
 function selectEvent($id){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare('SELECT * FROM Events WHERE idEvent=:id');
+    $req = $connexion->prepare('SELECT * FROM Events WHERE idEvent=:id ORDER BY dateEvent');
     $req->bindParam(':id', $id);
     $req->execute();
     $data = $req->fetch();
@@ -104,7 +104,7 @@ function rechercheEvents($type, $motCles){
 function selectEventByUser($idUser){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser");
+    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser ORDER BY dateEvent");
     $req->bindParam(':idUser', $idUser);
     $req->execute();
     $data=$req->fetchAll();
@@ -114,7 +114,7 @@ function selectEventByUser($idUser){
 function selectEventByUserAndFini($idUser){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser AND etat=0");
+    $req = $connexion->prepare("SELECT * FROM Events WHERE idUser=:idUser AND etat=0 ORDER BY dateEvent DESC");
     $req->bindParam(':idUser', $idUser);
     $req->execute();
     $data=$req->fetchAll();
@@ -128,27 +128,32 @@ function selectEventInscrit($idUser){
     $req->bindParam(':idUser', $idUser);
     $req->execute();
     $idEvents=$req->fetchAll();
-    $chaine="";
-    $i=1;
-    foreach($idEvents as $idEvent) {
-        if($i) {
-            $chaine.=" AND idEvent=\"".$idEvent["idEvent"]."\"";
-            $i=0;
+    if(!empty($idEvents)){
+        $chaine="";
+        $i=1;
+        foreach($idEvents as $idEvent) {
+            if($i) {
+                $chaine.=" AND idEvent=\"".$idEvent["idEvent"]."\"";
+                $i=0;
+            }
+            else {
+                $chaine.=" OR idEvent=\"".$idEvent["idEvent"]."\"";
+            }
         }
-        else {
-            $chaine.=" OR idEvent=\"".$idEvent["idEvent"]."\"";
-        }
+        $req2 = $connexion->prepare("SELECT * FROM Events WHERE etat=0".$chaine." ORDER BY dateEvent");
+        $req2->execute();
+        $data = $req2->fetchAll();
+        return $data;
     }
-    $req2 = $connexion->prepare("SELECT * FROM Events WHERE etat=0".$chaine." ORDER BY dateEvent");
-    $req2->execute();
-    $data = $req2->fetchAll();
-    return $data;
+    else{
+        return array();
+    }
 }
 
 function setEventFini($idEvent){
     require_once('pdo.php');
     $connexion = connexion();
-    $req = $connexion->prepare("UPDATE Events SET etat=1 WHERE idEvent=:idEvent");
+    $req = $connexion->prepare("UPDATE Events SET etat=1 WHERE idEvent=:idEvent ORDER BY dateEvent DESC");
     $req->bindParam(':idEvent', $idEvent);
     $req->execute();
 }
@@ -166,19 +171,20 @@ function inscriptionEvent($idUser, $idEvent, $nb){
     require_once('pdo.php');
     $connexion = connexion();
     $verif = $connexion->prepare("SELECT * FROM participe WHERE idEvent=:idEvent AND idUser=:idUser");
-    $verif->bindParam('idEvent', $idEvent);
+    $verif->bindParam(':idEvent', $idEvent);
+    $verif->bindParam(':idUser', $idUser);
     $verif->execute();
     $data2=$verif->fetchAll();
     if(empty($data2)){
         $req = $connexion->prepare("INSERT INTO participe VALUES( :idUser, :idEvent, :nb)");
     }
     else{
-        $req = $connexion->prepare("UPDATE participe SET nbParticipants=$nb WHERE idEvent=:idEvent AND idUser=:idUser");
+        $req = $connexion->prepare("UPDATE participe SET nbParticipants=:nb WHERE idEvent=:idEvent AND idUser=:idUser");
     }
     $value=array(':idUser'=>$idUser, ':idEvent'=>$idEvent, ':nb'=>$nb);
     $req->execute($value);
     $data = selectEvent($idEvent);
-    $nb=$nb+$data['nbparticipant'];
+    $nb=$nb+$data['nbparticipant']-$data2['nbParticipants'];
     $req2 = $connexion->prepare("UPDATE Events SET nbparticipant=$nb WHERE idEvent=:idEvent");
     $req2->bindParam(':idEvent', $idEvent);
     $req2->execute();

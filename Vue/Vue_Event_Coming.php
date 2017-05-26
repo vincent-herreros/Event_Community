@@ -13,7 +13,7 @@
 require('Vue_Menu.php');
 ?>
 <div class="container">
-    <h1>Evenements futurs</h1>
+    <h1>Evénements futurs</h1>
     <?php
     require('Vue_Events.php');
     affichage(1);

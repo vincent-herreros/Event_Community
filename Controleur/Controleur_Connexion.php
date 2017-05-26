@@ -3,13 +3,16 @@
     $mail=$_POST["email"];
     $pwd=$_POST["password"];
     if(empty($mail) || empty($pwd)){
-        echo "vous n'avez pas rempli tous les champs";
+        echo '<script>alert("vous n\'avez pas rempli tous les champs");</script>';
+        header("Location: ../connexion.php");
     }
     else if(!(filter_var($mail, FILTER_VALIDATE_EMAIL))){
-        echo "votre mail n'est pas valide";
+        echo '<script>alert("votre mail n\'est pas valide");</script>';
+        header("Location: ../connexion.php");
     }
     else if(empty(selectUser($mail))){
-        echo "aucun mail n'est associé";
+        echo '<script>alert("aucun mail n\'est associé");</script>';
+        header("Location: ../connexion.php");
     }
     else{
         $pwd=sha1(sha1($pwd));
@@ -21,7 +24,8 @@
             header("Location: ../index.php");
         }
         else{
-            echo "mdp erroné";
+            echo '<script>alert("mot de passe erroné");</script>';
+            header("Location: ../connexion.php");
         }
     }
 ?>

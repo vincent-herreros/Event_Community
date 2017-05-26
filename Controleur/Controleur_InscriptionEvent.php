@@ -1,7 +1,7 @@
 <?php
 require('../Modele/Events.php');
 require ('../Modele/Users.php');
-$idEvent=$_POST['idEvent'];
+$idEvent=$_POST['idE'];
 $nbpersonne=$_POST['nbpersonne'];
 $user=selectCookieUser($_COOKIE['cookieUser']);
 $user=$user['idUser'];

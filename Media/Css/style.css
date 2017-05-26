@@ -32,4 +32,25 @@ body{
     background-color: #28A9B7;
 }
 
+.btn{
+    background-color: #28A9B7;
+}
+
+.tabs .tab a{
+    color: #28A9B7;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active{
+    color: #28A9B7;
+}
+
+.tabs .indicator{
+    background-color: #28A9B7;
+}
+
+h1{
+    color: #464FAB;
+    text-align: center;
+}
+
 

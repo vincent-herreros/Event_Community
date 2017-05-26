@@ -13,14 +13,13 @@
 require('Vue_Menu.php');
 require ('Vue_Events.php');
 ?>
-<div class="container">
+<div class="container" style="margin-top: 5%;">
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a class="active" href="#EventC">Mes Evenements crées</a></li>
                 <li class="tab col s3"><a href="#Inscri">Mes Inscriptions</a></li>
                 <li class="tab col s3"><a href="#MyE">Mes Events finis</a></li>
-                <li class="tab col s3"><a href="#MyI">Mes Infos</a></li>
             </ul>
         </div>
         <div id="EventC" class="col s12">
@@ -36,13 +35,6 @@ require ('Vue_Events.php');
         <div id="MyE" class="col s12">
             <?php
                 affichage(5);
-            ?>
-        </div>
-        <div id="MyI" class="col s12">
-            <?php
-                $cookieUser=$_COOKIE['cookieUser'];
-                $user=selectCookieUser($cookieUser);
-                echo "<p>".$user["nom"]."</p>";
             ?>
         </div>
     </div>
