@@ -4,7 +4,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black;">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="eventpast.php">Events passés</a></li>
-            <li><a href="eventcoming.php">Events à venir</a></li>
+            <li><a href="eventcoming.php">Events futurs</a></li>
             <li><a href="#modal1">Rechercher</a></li>
             <li><a href="creation.php">Créer un Event</a></li>
             <?php
@@ -19,13 +19,13 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="eventpast.php">Events passés</a></li>
-            <li><a href="eventcoming.php">Events à venir</a></li>
+            <li><a href="eventcoming.php">Events futurs</a></li>
             <li><a href="#modal1">Rechercher</a></li>
             <li><a href="creation.php">Créer un Event</a></li>
             <?php
             if(connect()){
                 echo "<li><a href=\"mesevents.php\">Mes Events</a></li>";
-                echo "<li><a href=\"index.php\"><button onclick='deconnect()'></button></a></li>";
+                echo "<li><a href=\"Controleur/Controleur_Deco.php\">Déconnexion</a></li>";
             }
             else{
                 echo "<li><a href=\"connexion.php\">Connexion</a></li>";

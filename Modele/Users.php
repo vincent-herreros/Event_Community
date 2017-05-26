@@ -8,6 +8,16 @@
         return $data;
     }
 
+    function selectUserById($id){
+        require_once('pdo.php');
+        $connexion = connexion();
+        $req = $connexion->prepare('SELECT * FROM Users WHERE idUser=:idUser');
+        $req->bindParam(':idUser',$id);
+        $req->execute();
+        $data = $req->fetch();
+        return $data;
+    }
+
     function selectUser($mail){
         require_once('pdo.php');
         $connexion = connexion();

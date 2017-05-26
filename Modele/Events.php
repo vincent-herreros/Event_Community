@@ -41,7 +41,6 @@ function creationEvent($titre, $type, $lieu, $nbParticipant, $dateEvent, $heure,
     $req->execute($value);
     $Event=selectEventByUserandTitre($titre, $idUser);
     $idEvent=$Event["idEvent"];
-    echo $idEvent;
     foreach ($motCles as $motCle){
         insertionMotCle($motCle);
         insertionCaracterise($idEvent, $motCle);
@@ -96,7 +95,6 @@ function rechercheEvents($type, $motCles){
     if($chaine!=""){
         $sql.=" NATURAL JOIN (SELECT DISTINCT * FROM caracterise WHERE ".$chaine.") C";
     }
-    echo $sql;
     $req = $connexion->prepare($sql);
     $req->execute();
     $data=$req->fetchAll();

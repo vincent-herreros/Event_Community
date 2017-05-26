@@ -24,6 +24,13 @@ function affichage($choix){
     elseif($choix==5){
         $events=selectEventFiniandParticipe($user["idUser"]);
     }
+    elseif($choix==6){
+        $k=1;
+        while(isset($_GET["idEvent".$k.""])){
+            array_push($events, selectEvent($_GET["idEvent".$k.""]));
+            $k++;
+        }
+    }
     $i=1;
     $j=0;
     foreach($events as $event){
@@ -46,10 +53,10 @@ function affichage($choix){
                                         <p>".$event["Description"]."</p>
                                     </div>
                                     <div class='col s6'>
-                                        <p>".$event["lieu"]."</p>
-                                        <p>".$event["nbparticipant"]."</p>
-                                        <p>".$event["dateEvent"]."</p>
-                                        <p>".$event["heure"]."</p>
+                                        <p>Lieu : ".$event["lieu"]."</p>
+                                        <p>Nombre de participant : ".$event["nbparticipant"]."</p>
+                                        <p>Date de l'évenement : ".$event["dateEvent"]."</p>
+                                        <p>Heure de rendez-vous : ".$event["heure"]."</p>
                                     </div>
                                 </div>";
 
@@ -65,6 +72,19 @@ function affichage($choix){
         }
         elseif ($choix==3){
             echo "<form action=\"Controleur/Controleur_MesEvents.php\" method=\"post\">
+                    <div class=\"input-field col s12\">
+                        <textarea id=\"textarea1\" name=\"idE\" class=\"materialize-textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$event["idEvent"]."</textarea>
+                    </div>
+                    <button class=\"btn waves - effect waves - light\" type=\"submit\" name=\"action\">Submit
+                        <i class=\"material - icons right\">send</i>
+                    </button>
+                </form>";
+        }
+        elseif ($choix==5) {
+            echo "<form action=\"Controleur/Controleur_Event.php\" method=\"post\">
+                    <div class=\"input-field col s12\">
+                        <textarea id=\"textarea1\" name=\"idE\" class=\"materialize-textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$event["idEvent"]."</textarea>
+                    </div>
                     <button class=\"btn waves - effect waves - light\" type=\"submit\" name=\"action\">Submit
                         <i class=\"material - icons right\">send</i>
                     </button>

@@ -38,6 +38,13 @@ require ('Vue_Events.php');
                 affichage(5);
             ?>
         </div>
+        <div id="MyI" class="col s12">
+            <?php
+                $cookieUser=$_COOKIE['cookieUser'];
+                $user=selectCookieUser($cookieUser);
+                echo "<p>".$user["nom"]."</p>";
+            ?>
+        </div>
     </div>
 </div>
 

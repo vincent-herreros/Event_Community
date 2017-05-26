@@ -1,32 +1,32 @@
 
 /* changement de couleur de date sélectionné, date du jour et bouton dans le module date */
 .picker__date-display {
-    background-color:#0092CA;
+    background-color:#28A9B7;
 }
 .picker__weekday-display {
-    background-color:#0092CA;
+    background-color:#28A9B7;
 }
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
-    background-color:#0092CA;
+    background-color:#28A9B7;
 }
 .btn-flat{
     color: #343434;
 }
 .picker__day.picker__day--today{
-    color: #0092CA;
+    color: #28A9B7;
 }
 /* changement de couleur du label */
-.input-field input[type=text]:focus + label, .input-field input[type=email]:focus + label, .input-field input[type=password]:focus + label, .input-field input[type=tel]:focus + label{
-    color: #0092CA;
+.input-field input[type=text]:focus + label, .input-field input[type=email]:focus + label, .input-field input[type=password]:focus + label, .input-field input[type=tel]:focus + label {
+    color: #28A9B7;
 }
 /* changement de couleur de la ligne */
 .input-field input[type=text]:focus, .input-field input[type=email]:focus, .input-field input[type=password]:focus, .input-field input[type=tel]:focus{
-    border-bottom: 1px solid #0092CA;
-    box-shadow: 0 1px 0 0 #0092CA;
+    border-bottom: 1px solid #28A9B7;
+    box-shadow: 0 1px 0 0 #28A9B7;
 }
 /* changement de couleur de l'icone*/
 .material-icons.prefix.active{
-    color: #0092CA;
+    color: #28A9B7;
 }
 
 .connect{

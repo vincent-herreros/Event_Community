@@ -8,6 +8,7 @@ require('../Modele/Events.php');
     else{
         $motCles = explode(" ", $motCles);
         $datas=rechercheEvents($type, $motCles);
+        echo "heu";
         $chaine="";
         $i=1;
         foreach ($datas as $data){

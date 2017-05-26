@@ -12,6 +12,7 @@
 require('Vue_Menu.php');
 ?>
 <div class="container">
+    <h1>Créez votre évenement</h1>
    <div class="row">
        <form class="col s12" action="Controleur/Controleur_Inscription.php" method="post">
            <div class="row">

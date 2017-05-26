@@ -13,7 +13,7 @@
     require('Vue_Menu.php');
 ?>
 <div class="container">
-    <div class="center-align" style="margin-top: 5%">
+    <div class="center-align" style="margin-top: 5%; margin-bottom: 5%;">
         <img class="responsive-img" src="Media/Images/logo2.png">
     </div>
 

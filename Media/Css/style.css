@@ -4,21 +4,21 @@ body{
 
 /* couleur des types dans rechercher*/
 .dropdown-content li > a, .dropdown-content li > span{
-    color: #0092CA;
+    color: #28A9B7;
 }
 
 .modal-footer button{
-    background-color: #0092CA;
+    background-color: #28A9B7;
 }
 
 .modal-footer button:hover{
-    background-color: #01579b;
+    background-color: #28A9B7;
 }
 
 .chips:hover, chips:focus{
     border-bottom: 1px solid;
-    border-color: #0092CA;
-    box-shadow: 0 1px 0 0 #0092CA;
+    border-color: #28A9B7;
+    box-shadow: 0 1px 0 0 #28A9B7;
 }
 
 #nav-mobile li > a{
@@ -27,4 +27,9 @@ body{
 .side-nav li > a{
     color: #464FAB;
 }
+
+.btn:hover{
+    background-color: #28A9B7;
+}
+
 
