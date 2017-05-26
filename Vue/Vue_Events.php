@@ -98,9 +98,9 @@ function affichage($choix){
         }
                                 echo"</div>";
 
-        if($choix==1){
+        if($choix==1 or $choix==6){
             echo "<form action=\"Controleur/Controleur_InscriptionEvent.php\" method=\"post\">
-                    <p class=\"range-field\">
+                    <p class=\"range-field\">Nombre de personne à inscrire
                         <input type=\"range\" name='nbpersonne' id=\"test5\" min=\"0\" max=\"100\" />
                     </p>
                     <button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Participer
@@ -121,7 +121,7 @@ function affichage($choix){
                     </div>
                 </form>";
         }
-        elseif ($choix==5) {
+        elseif ($choix==5 or $choix==2) {
             echo "<form action=\"Controleur/Controleur_Event.php\" method=\"post\">
                     <div class=\"input-field col s12\">
                         <textarea id=\"textarea1\" name=\"idE\" class=\"materialize-textarea disabled\" data-length=\"120\" style=\"visibility: hidden;\">".$event["idEvent"]."</textarea>
